@@ -191,3 +191,77 @@ class HairyYak implements Yak {
 }
 ```
 
+
+
+### Function Types
+
+```typescript
+interface ReducerFunction {
+  (state: AppState) : AppState
+}
+
+// using it
+const countReducer : ReducerFunction = function (state) {
+  return { count: state.count + 1 }
+}
+// You don't need to annotate the types, because they'll already be checked by the interface
+```
+
+
+
+### Indexable Types
+
+TODO: I don't really know what this is about, needs further explanation. The course didn't do a good job of explaining it to me, so I'll need to seek out more examples.
+
+```typescript
+interface ArrayOfStrings {
+  [index: nuber]: string;
+}
+
+const fruits : ArrayOfStrings = ["apples", "bananas"];
+const favourites : string = fruits[1];
+```
+
+
+
+### Classes
+
+- methods are public by default, but you can mark it as explicit with a `public`
+
+  ```typescript
+  class Phone {
+    public color: string;
+    public ring(ringtone: string) {
+      return `${ringtone}`;
+    }
+  }
+  ```
+
+- Similarly, you can mark things as private.
+
+  ```typescript
+  class House {
+    private cost : number;
+  }
+  ```
+
+- Protected members can be accessed by instances of the _deriving_ class (subclass)
+
+  ```typescript
+  class Person {
+    protected name : string;
+    constructor(name: string) { this.name = name; }
+  }
+
+  class Celebrity extends Person {
+    private irdNumer : number;
+
+    constructor(name: string, irdNumber: string) {
+      super(name);
+  	this.irdNumber = irdNumber;
+    }
+  }
+  ```
+
+  ​
+
